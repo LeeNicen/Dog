@@ -367,7 +367,7 @@ end
 local function scan_ores()
   local scanned = scan()
   if type(scanned) == "table" then
-    -- Scan was a success, sort through it for the first ore (if there is one).
+    -- Scan was a success, clean up the scanned data, and offset it to the turtle's position.
     state.state_info.last_scan = strip_and_offset_scan(scanned)
   end
 end
