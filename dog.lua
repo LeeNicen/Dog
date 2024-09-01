@@ -31,8 +31,8 @@ local max_offset = 8
 local scan = nil ---@type fun():table<integer, table> Set during initialization.
 local do_fuel = false
 local horizontal = false
-local version = "V0.14.0"
-local latest_changes = [[Fixed a *ton* of bugs, added the bark feature (and the ability to muzzle the dog).]]
+local version = "V0.14.1"
+local latest_changes = [[Added some more ores to the ore lookup table. If you have any ores you want to add, PRs are open!]]
 
 local parser = simple_argparse.new_parser("dog", "Dog is a program run on mining turtles which is used to find ores and mine them. Unlike quarry programs, this program digs in a straight line down and uses either plethora's block scanner or advanced peripheral's geoscanner to detect where ores are along its path and mine to them.")
 parser.add_option("depth", "The maximum depth to dig to.", max_depth)
