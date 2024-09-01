@@ -263,6 +263,21 @@ local ORE_DICT = {
   ["thermal:deepslate_silver_ore"] = true,
   ["thermal:nickel_ore"] = true,
   ["thermal:deepslate_nickel_ore"] = true,
+  ["thermal:ruby_ore"] = true,
+  ["thermal:deepslate_ruby_ore"] = true,
+  ["thermal:sapphire_ore"] = true,
+  ["thermal:deepslate_sapphire_ore"] = true,
+
+  -- RFTools-Base
+  ["rftoolsbase:dimensionalshard_overworld"] = true,
+  ["rftoolsbase:dimensionalshard_nether"] = true,
+  ["rftoolsbase:dimensionalshard_end"] = true,
+
+  -- Deep Resonance
+  ["deepresonance:resonating_ore_stone"] = true,
+  ["deepresonance:resonating_ore_deepslate"] = true,
+  ["deepresonance:resonating_ore_nether"] = true,
+  ["deepresonance:resonating_ore_end"] = true,
 }
 if parsed.options.exclude then
   if root_folder:exists(parsed.options.exclude) then
