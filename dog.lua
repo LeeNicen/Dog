@@ -31,8 +31,8 @@ local max_offset = 8
 local scan = nil ---@type fun():table<integer, table> Set during initialization.
 local do_fuel = false
 local horizontal = false
-local version = "V0.14.1"
-local latest_changes = [[Added some more ores to the ore lookup table. If you have any ores you want to add, PRs are open!]]
+local version = "V0.14.2"
+local latest_changes = [[Fixed error that occurs if turtle detects an ore during the first movement.]]
 
 local parser = simple_argparse.new_parser("dog", "Dog is a program run on mining turtles which is used to find ores and mine them. Unlike quarry programs, this program digs in a straight line down and uses either plethora's block scanner or advanced peripheral's geoscanner to detect where ores are along its path and mine to them.")
 parser.add_option("depth", "The maximum depth to dig to.", max_depth)
@@ -343,7 +343,7 @@ end
 
 local state = {
   state = "digdown", ---@type "digdown"|"seeking"|"returning_home"|"returning_from_seek"|"errored"
-  state_info = {}
+  state_info = {depth = 0}
 }
 
 --- Strip the scan data down to just the coordinates and block name, then offset every block by the turtle's offset from home.
@@ -379,7 +379,7 @@ end
 local function load_state()
   local loaded_state = data_folder:unserialize(STATE_FILE ,{
     state = "digdown",
-    state_info = {}
+    state_info = {depth = 0}
   })
   if loaded_state then
     state = loaded_state
@@ -784,7 +784,9 @@ local function draw_data()
 
   -- horizontal gray line
   data_win.setTextColor(colors.white)
-  data_win.write(string.rep('\x8c', math.ceil(tx / 2) - 3) .. " DATA " .. string.rep('\x8c', math.ceil(tx / 2) - 3))
+  data_win.write(string.rep('\x8c', tx))
+  data_win.setCursorPos(math.ceil(tx / 2) - 3, 1)
+  data_win.write(" DATA ")
 
   -- write position data
   data_win.setCursorPos(1, 2)
@@ -814,7 +816,7 @@ local function draw_data()
     end
   elseif state.state == "digdown" then
     data_win.setCursorPos(1, 4)
-    data_win.write("Depth: " .. aid.position.y)
+    data_win.write("Depth: " .. tostring(aid.position.y))
   elseif state.state == "returning_home" then
     data_win.setCursorPos(1, 4)
     data_win.write("Returning Home.")
@@ -823,7 +825,7 @@ local function draw_data()
     data_win.write("Returning to last known height.")
 
     data_win.setCursorPos(1, 5)
-    data_win.write("  Target depth: " .. state.state_info.depth)
+    data_win.write("  Target depth: " .. tostring(state.state_info.depth))
   elseif state.state == "errored" then
     data_win.setCursorPos(1, 4)
     data_win.write("Errored. On way home.")
