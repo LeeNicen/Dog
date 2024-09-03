@@ -31,8 +31,8 @@ local max_offset = 8
 local scan = nil ---@type fun():table<integer, table> Set during initialization.
 local do_fuel = false
 local horizontal = false
-local version = "V0.14.2"
-local latest_changes = [[Fixed error that occurs if turtle detects an ore during the first movement.]]
+local version = "V0.14.3"
+local latest_changes = [[Added a few more blocks as ores. If you wish to add some that are missing, PRs are open!]]
 
 local parser = simple_argparse.new_parser("dog", "Dog is a program run on mining turtles which is used to find ores and mine them. Unlike quarry programs, this program digs in a straight line down and uses either plethora's block scanner or advanced peripheral's geoscanner to detect where ores are along its path and mine to them.")
 parser.add_option("depth", "The maximum depth to dig to.", max_depth)
@@ -229,6 +229,7 @@ local ORE_DICT = {
   ["minecraft:deepslate_redstone_ore"] = true,
   ["minecraft:nether_gold_ore"] = true,
   ["minecraft:ancient_debris"] = true,
+  ["minecraft:glowstone"] = true, -- Not technically an ore, but some might consider it worth collecting if we stumble upon it!
 
   -- ##  MODDED ORES  ##
   -- Create
