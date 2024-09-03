@@ -224,6 +224,7 @@ local ORE_DICT = {
   ["minecraft:emerald_ore"] = true,
   ["minecraft:deepslate_emerald_ore"] = true,
   ["minecraft:quartz_ore"] = true,
+  ["minecraft:nether_quartz_ore"] = true,
   ["minecraft:redstone_ore"] = true,
   ["minecraft:deepslate_redstone_ore"] = true,
   ["minecraft:nether_gold_ore"] = true,
