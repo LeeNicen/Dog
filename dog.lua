@@ -392,6 +392,7 @@ local ORE_DICT = {
   ["techreborn:iridium_ore"] = true,
   ["techreborn:lead_ore"] = true,
   ["techreborn:peridot_ore"] = true,
+  ["techreborn:pyrite_ore"] = true,
   ["techreborn:ruby_ore"] = true,
   ["techreborn:sapphire_ore"] = true,
   ["techreborn:sheldonite_ore"] = true,
