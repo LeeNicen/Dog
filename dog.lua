@@ -290,6 +290,8 @@ local ORE_DICT = {
   -- Industrial Revolution
   ["indrev:deepslate_silver_ore"] = true,
   ["indrev:silver_ore"] = true,
+  ["indrev:nikolite_ore"] = true,
+  ["indrev:deepslate_nikolite_ore"] = true,
   
   -- Jewelry
   ["jewelry:deepslate_gem_vein"] = true,
